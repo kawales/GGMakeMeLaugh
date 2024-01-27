@@ -25,7 +25,7 @@ public class GameManagerScr : MonoBehaviour
     GameObject selected1;
     GameObject selected2;
     Enemy enemy;
-    // Start is called before the first frame update
+    // Start is called before the first frame update 
     void Start()
     {   
         
@@ -44,7 +44,7 @@ public class GameManagerScr : MonoBehaviour
 
         queuedText = enemy.vratiQuote();
         StartCoroutine(printText);
-        //discard();
+       // discard();
     }
 
     // Update is called once per frame
@@ -54,7 +54,6 @@ public class GameManagerScr : MonoBehaviour
         {
             //AddCard();
          //   discard();
-            discard();
         }
         if(Input.GetKeyDown(KeyCode.Space) && queuedText!="")
         {
@@ -64,7 +63,19 @@ public class GameManagerScr : MonoBehaviour
             //Get new quote for next turn
         }
     }
+    public void merge()
+    {
+        Card karta1 = selected1.GetComponent<Card>();
+        Card karta2 = selected2.GetComponent<Card>();
+        //int index = selected2.transform.GetSiblingIndex();
 
+        karta1.spojiKarte(karta2);
+        Destroy(HandObj.Find(selected2.transform.name).gameObject);
+        if(selected2 == null)
+        {
+            Debug.Log("obrisan drugi");
+        }
+    }
     public void AddCard()
     {
         if(deck.Count==0)
@@ -98,7 +109,7 @@ public class GameManagerScr : MonoBehaviour
 
     public void discard()
    {
-        int brojKarataURuci = HandObj.childCount;
+        int brojKarataURuci = HandObj.GetChildCount();
         shuffleDeck();
         foreach (Card item in deck)
         {
@@ -129,7 +140,6 @@ public class GameManagerScr : MonoBehaviour
         {
             Debug.Log("Karte diskard na kraju " + item);
         }
-        cardsUsed=0;
         for (int i = 0; i < pl.vratiMaxBrojKarataURuci(); i++)
         {
             AddCard();
@@ -160,7 +170,6 @@ public class GameManagerScr : MonoBehaviour
                 speechBubble.text += queuedText[speechBubble.text.Length];
             }
             speechBubble.text += queuedText[speechBubble.text.Length];
-            Debug.Log(speechBubble.textBounds);
             yield return new WaitForSeconds(textTempo);
         }
         
@@ -182,7 +191,7 @@ public class GameManagerScr : MonoBehaviour
         {
             selected1=c;
         }
-        else if(selected1.GetComponent<Card>().vratiMozeDaSeMerguje() && c.GetComponent<Card>().vratiMozeDaSeMerguje())
+        else if(selected1.GetComponent<Card>().vratiMozeDaSeMerguje())
         {
             highlightSelected(true);
             selected2=c;
@@ -221,19 +230,11 @@ public class GameManagerScr : MonoBehaviour
 
     public void NextTurn()
     {
-        enemy.samnjiPotez();
         //calcCombo
-        if(selected1!= null && selected2!=null)
-        {
-            //
-        }
-        else if(selected1!=null)
+        if(selected1!=null)
         {
             enemy.uradiDmg(selected1.GetComponent<Card>());
         }
-        highlightSelected(true);
-        selected1=null;
-        selected2=null;
         StopCoroutine(printText);
         speechBubble.text="";
         queuedText=enemy.vratiQuote();
