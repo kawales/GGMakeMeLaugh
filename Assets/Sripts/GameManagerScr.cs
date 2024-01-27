@@ -17,7 +17,7 @@ public class GameManagerScr : MonoBehaviour
     Player pl;
     string queuedText= "The <i>quick brown fox</i> jumps over the <b>lazy dog</b>.";
     int cardsUsed=0;
-    float textTempo=0.1f;
+    float textTempo=0.05f;
     int maxCardsInHand=3;
     List<Card> deck;
     IEnumerator printText;
@@ -241,9 +241,11 @@ public class GameManagerScr : MonoBehaviour
         selected2=null;
         StopCoroutine(printText);
         speechBubble.text="";
+        enemy.samnjiPotez();
         queuedText=enemy.vratiQuote();
         printText=spellOutText();
         StartCoroutine(printText);
+        
         
     }
 
