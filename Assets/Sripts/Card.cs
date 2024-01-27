@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Card : MonoBehaviour
 {
-    [SerializeField] string tekstKarte { get; set; }
+    [SerializeField] string tekstKarte;
     [SerializeField] float kevaDmg ;
     [SerializeField] float redditDmg;
     [SerializeField] float animeDmg;
