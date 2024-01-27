@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 6601551239173052606}
   - component: {fileID: 5251272239025850016}
   - component: {fileID: 4212589456030672659}
+  - component: {fileID: 3861563587653950283}
   m_Layer: 5
   m_Name: CardType1
   m_TagString: Untagged
@@ -248,7 +249,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -248, y: 65.857834}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 258.1989}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3746395812057773137
@@ -411,3 +412,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3861563587653950283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8305075060036962322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a95cfa575515df4eb60f4ac7f2796dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tekstKarte: 
+  kevaDmg: 0
+  redditDmg: 0
+  animeDmg: 0
+  dadJokeDmg: 0
+  izgledKarte: {fileID: 0}
+  mozeDaSeMerguje: 0
+  cardText: {fileID: 256961455161300035}
+  cardImage: {fileID: 4945975737381389554}

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
-
+using TMPro;
+using UnityEngine.UI;
 [System.Serializable]
 public class Card : MonoBehaviour
 {
@@ -13,7 +15,9 @@ public class Card : MonoBehaviour
     [SerializeField] Sprite izgledKarte;
     //private Dictionary<string, int> statoviKarte { get; set; }
     [SerializeField] bool mozeDaSeMerguje;
-    
+    //Vizualni deo
+    [SerializeField]TMP_Text cardText;
+    [SerializeField]Image cardImage;
     public void spojiKarte(Card card)
     {
         this.kevaDmg += card.kevaDmg;
@@ -52,6 +56,31 @@ public class Card : MonoBehaviour
     {
         
     }
+
+    public void LoadCard(Card c)
+    {
+        tekstKarte=c.tekstKarte;
+        dadJokeDmg=c.dadJokeDmg;
+        kevaDmg=c.kevaDmg;
+        animeDmg=c.animeDmg;
+        redditDmg=c.redditDmg;
+        mozeDaSeMerguje=c.mozeDaSeMerguje;
+        izgledKarte=c.izgledKarte;
+
+        cardText.text = c.vratiTekstKarte();
+        //DEBUG ISPIS 
+            cardText.text +="\nDad:"+dadJokeDmg;
+            cardText.text +="\nKeva:"+kevaDmg;
+            cardText.text +="\nAnime:"+animeDmg;
+            cardText.text +="\nRedd:"+redditDmg;
+            cardText.text +="\nMerge:"+mozeDaSeMerguje.ToString();
+        //
+        if(izgledKarte!=null)
+        {
+            cardImage.sprite=c.vratiSliku();
+        }
+    }
+
     public float vratiKevaDmgStat()
     {
         return this.kevaDmg;
@@ -68,5 +97,19 @@ public class Card : MonoBehaviour
     {
         return this.dadJokeDmg;
 
+    }
+
+    public Sprite vratiSliku()
+    {
+        return this.izgledKarte;
+    }
+    public string vratiTekstKarte()
+    {
+        return this.tekstKarte;
+    }
+
+    public bool vratiMozeDaSeMerguje()
+    {
+        return this.mozeDaSeMerguje;
     }
 }
