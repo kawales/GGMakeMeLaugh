@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] int brojPoteza;
     [SerializeField] int brojBitnihQuoteova;
     private float procenatZaBitanQuote = 80f;
-    Card c = new Card(2,1,0,0);
+   // Card c = new Card(2,1,0,0);
     private int nizBezBitnog = 0;
 
 
