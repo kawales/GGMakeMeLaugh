@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 [System.Serializable]
@@ -68,5 +69,14 @@ public class Card : MonoBehaviour
     {
         return this.dadJokeDmg;
 
+    }
+
+    public Sprite vratiSliku()
+    {
+        return this.izgledKarte;
+    }
+    public string vratiTekstKarte()
+    {
+        return this.tekstKarte;
     }
 }
