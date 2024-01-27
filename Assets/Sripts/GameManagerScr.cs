@@ -10,20 +10,26 @@ public class GameManagerScr : MonoBehaviour
     Transform HandObj;
     [SerializeField]int offsetCards = 50;
     TMP_Text speechBubble;
+    Player pl;
     string tempText= "The <i>quick brown fox</i> jumps over the <b>lazy dog</b>.";
     int cardsUsed=0;
     float textTempo=0.1f;
+    int maxCardsInHand=3;
+    List<Card> deck;
+    IEnumerator printText;
     // Start is called before the first frame update
     void Start()
     {
+        pl = GameObject.Find("Player").GetComponent<Player>();
         HandObj = GameObject.Find("Hand").transform;
         speechBubble = GameObject.Find("SpeechBubbleText").GetComponent<TMP_Text>();
-        //tet
+        //ucitaj deck i max hands
         for(int i=0;i<3;i++)
         {
             AddCard();
         }
-        StartCoroutine(spellOutText());
+        printText=spellOutText();
+        StartCoroutine(printText);
     }
 
     // Update is called once per frame
@@ -32,6 +38,13 @@ public class GameManagerScr : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.A))
         {
             AddCard();
+        }
+        if(Input.GetKeyDown(KeyCode.Space) && tempText!="")
+        {
+            StopCoroutine(printText);
+            speechBubble.text=tempText;
+            tempText="";
+            //Get new quote for next turn
         }
     }
 
@@ -80,6 +93,6 @@ public class GameManagerScr : MonoBehaviour
         }
         
     }
-    
+
 
 }
