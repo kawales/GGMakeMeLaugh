@@ -37,28 +37,15 @@ public class Player : MonoBehaviour
         }
 
     }
-    private Player() {
-        dodajUDekAkoJePrazan();
-    }
-    private static Player instance = null;
-    public static Player Instance
-    {
-        get
-        {
-            if (instance == null)
-            {
-                instance = new Player();
-            }
-            return instance;
-        }
-    }
+  
+    
 
     
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        dodajUDekAkoJePrazan();
     }
 
     // Update is called once per frame
