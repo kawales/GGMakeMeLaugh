@@ -15,7 +15,7 @@ public class GameManagerScr : MonoBehaviour
     [SerializeField]int offsetCards = 50;
     TMP_Text speechBubble;
     Player pl;
-    string tempText= "The <i>quick brown fox</i> jumps over the <b>lazy dog</b>.";
+    string queuedText= "The <i>quick brown fox</i> jumps over the <b>lazy dog</b>.";
     int cardsUsed=0;
     float textTempo=0.1f;
     int maxCardsInHand=3;
@@ -24,11 +24,13 @@ public class GameManagerScr : MonoBehaviour
     //selected cards
     GameObject selected1;
     GameObject selected2;
+    Enemy enemy;
     // Start is called before the first frame update
     void Start()
     {   
         
         pl = GameObject.Find("Player").GetComponent<Player>();
+        enemy = GameObject.Find("Enemy").GetComponent<Enemy>();
         HandObj = GameObject.Find("Hand").transform;
         speechBubble = GameObject.Find("SpeechBubbleText").GetComponent<TMP_Text>();
         deck=pl.vratiDek();
@@ -36,8 +38,11 @@ public class GameManagerScr : MonoBehaviour
         {
             AddCard();
         }
-        Debug.Log(deck.Count);
+        //Debug.Log(deck.Count);
         printText=spellOutText();
+
+
+        queuedText = enemy.vratiQuote();
         StartCoroutine(printText);
         discard();
     }
@@ -50,11 +55,11 @@ public class GameManagerScr : MonoBehaviour
             //AddCard();
          //   discard();
         }
-        if(Input.GetKeyDown(KeyCode.Space) && tempText!="")
+        if(Input.GetKeyDown(KeyCode.Space) && queuedText!="")
         {
             StopCoroutine(printText);
-            speechBubble.text=tempText;
-            tempText="";
+            speechBubble.text=queuedText;
+            queuedText="";
             //Get new quote for next turn
         }
     }
@@ -133,26 +138,26 @@ public class GameManagerScr : MonoBehaviour
 
     IEnumerator spellOutText()
     {
-        while(speechBubble.text.Length<tempText.Length)
+        while(speechBubble.text.Length<queuedText.Length)
         {
-            if(tempText[speechBubble.text.Length]=='<' && (tempText[speechBubble.text.Length+2]=='>' ||  tempText[speechBubble.text.Length+3]=='>'))
+            if(queuedText[speechBubble.text.Length]=='<' && (queuedText[speechBubble.text.Length+2]=='>' ||  queuedText[speechBubble.text.Length+3]=='>'))
             {
                 
-                if(tempText[speechBubble.text.Length+1]=='/')
+                if(queuedText[speechBubble.text.Length+1]=='/')
                 {
                     //Debug.Log(speechBubble.text);
-                    speechBubble.text += tempText[speechBubble.text.Length];
+                    speechBubble.text += queuedText[speechBubble.text.Length];
                 }
-                else if(tempText[speechBubble.text.Length+1]=='#')
+                else if(queuedText[speechBubble.text.Length+1]=='#')
                 {
                     //Debug.Log(speechBubble.text);
-                    textTempo =  0.5f/int.Parse(tempText[speechBubble.text.Length]+"");
+                    textTempo =  0.5f/int.Parse(queuedText[speechBubble.text.Length]+"");
                 }
-                speechBubble.text += tempText[speechBubble.text.Length];
-                speechBubble.text += tempText[speechBubble.text.Length];
-                speechBubble.text += tempText[speechBubble.text.Length];
+                speechBubble.text += queuedText[speechBubble.text.Length];
+                speechBubble.text += queuedText[speechBubble.text.Length];
+                speechBubble.text += queuedText[speechBubble.text.Length];
             }
-            speechBubble.text += tempText[speechBubble.text.Length];
+            speechBubble.text += queuedText[speechBubble.text.Length];
             yield return new WaitForSeconds(textTempo);
         }
         
@@ -211,5 +216,19 @@ public class GameManagerScr : MonoBehaviour
     }
 
 
+    public void NextTurn()
+    {
+        //calcCombo
+        if(selected1!=null)
+        {
+            enemy.uradiDmg(selected1.GetComponent<Card>());
+        }
+        StopCoroutine(printText);
+        speechBubble.text="";
+        queuedText=enemy.vratiQuote();
+        printText=spellOutText();
+        StartCoroutine(printText);
+        
+    }
 
 }
