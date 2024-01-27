@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
+using TMPro;
+using UnityEngine.UI;
 [System.Serializable]
 public class Card : MonoBehaviour
 {
@@ -14,7 +15,9 @@ public class Card : MonoBehaviour
     [SerializeField] Sprite izgledKarte;
     //private Dictionary<string, int> statoviKarte { get; set; }
     [SerializeField] bool mozeDaSeMerguje;
-    
+    //Vizualni deo
+    [SerializeField]TMP_Text cardText;
+    [SerializeField]Image cardImage;
     public void spojiKarte(Card card)
     {
         this.kevaDmg += card.kevaDmg;
@@ -53,6 +56,16 @@ public class Card : MonoBehaviour
     {
         
     }
+
+    public void LoadCard(Card c)
+    {
+        cardText.text = c.vratiTekstKarte();
+        if(izgledKarte!=null)
+        {
+            cardImage.sprite=c.vratiSliku();
+        }
+    }
+
     public float vratiKevaDmgStat()
     {
         return this.kevaDmg;

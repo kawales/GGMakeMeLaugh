@@ -52,10 +52,17 @@ public class GameManagerScr : MonoBehaviour
 
     public void AddCard()
     {
+        if(deck.Count==0)
+        {
+            Debug.Log("EMPTY DECK");
+            return;
+        }
         Card pulledCard = deck.Last();
         deck.Remove(deck.Last());
         cardsUsed++;
         GameObject tempCard = Instantiate(BaseCards,HandObj.transform);
+        //tempCard.>();
+        tempCard.GetComponent<Card>().LoadCard(pulledCard);
         if(cardsUsed>1)
         {   
             //Debug.Log(cardsUsed);
