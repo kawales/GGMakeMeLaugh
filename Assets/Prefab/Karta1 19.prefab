@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7205205427132274956}
   - component: {fileID: 5835027250293031784}
   m_Layer: 0
-  m_Name: Karta1
+  m_Name: Karta1 19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,12 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a95cfa575515df4eb60f4ac7f2796dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tekstKarte: 1
-  kevaDmg: 2
-  redditDmg: 0
-  animeDmg: -1
-  dadJokeDmg: 5
+  tekstKarte: 10
+  kevaDmg: 0
+  redditDmg: 4
+  animeDmg: 1
+  dadJokeDmg: 0
   izgledKarte: {fileID: 0}
-  mozeDaSeMerguje: 0
+  mozeDaSeMerguje: 1
   cardText: {fileID: 0}
   cardImage: {fileID: 0}
