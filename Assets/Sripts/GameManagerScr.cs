@@ -44,7 +44,7 @@ public class GameManagerScr : MonoBehaviour
 
         queuedText = enemy.vratiQuote();
         StartCoroutine(printText);
-        discard();
+        //discard();
     }
 
     // Update is called once per frame
@@ -54,6 +54,7 @@ public class GameManagerScr : MonoBehaviour
         {
             //AddCard();
          //   discard();
+            discard();
         }
         if(Input.GetKeyDown(KeyCode.Space) && queuedText!="")
         {
@@ -128,6 +129,7 @@ public class GameManagerScr : MonoBehaviour
         {
             Debug.Log("Karte diskard na kraju " + item);
         }
+        cardsUsed=0;
         for (int i = 0; i < pl.vratiMaxBrojKarataURuci(); i++)
         {
             AddCard();
@@ -179,7 +181,7 @@ public class GameManagerScr : MonoBehaviour
         {
             selected1=c;
         }
-        else if(selected1.GetComponent<Card>().vratiMozeDaSeMerguje())
+        else if(selected1.GetComponent<Card>().vratiMozeDaSeMerguje() && c.GetComponent<Card>().vratiMozeDaSeMerguje())
         {
             highlightSelected(true);
             selected2=c;
