@@ -160,6 +160,7 @@ public class GameManagerScr : MonoBehaviour
                 speechBubble.text += queuedText[speechBubble.text.Length];
             }
             speechBubble.text += queuedText[speechBubble.text.Length];
+            Debug.Log(speechBubble.textBounds);
             yield return new WaitForSeconds(textTempo);
         }
         
@@ -222,10 +223,17 @@ public class GameManagerScr : MonoBehaviour
     {
         enemy.samnjiPotez();
         //calcCombo
-        if(selected1!=null)
+        if(selected1!= null && selected2!=null)
+        {
+            //
+        }
+        else if(selected1!=null)
         {
             enemy.uradiDmg(selected1.GetComponent<Card>());
         }
+        highlightSelected(true);
+        selected1=null;
+        selected2=null;
         StopCoroutine(printText);
         speechBubble.text="";
         queuedText=enemy.vratiQuote();
