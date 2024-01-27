@@ -10,8 +10,40 @@ public class Enemy : MonoBehaviour
     [SerializeField] float redditMult;
     [SerializeField] float animeMult;
     [SerializeField] float dadJokeMult;
+    [SerializeField] string[] quoteBitan;
+    [SerializeField] string[] quoteNebitan;
+    [SerializeField] int brojPoteza;
+    [SerializeField] int brojBitnihQuoteova;
+    private float procenatZaBitanQuote;
     Card c = new Card(2,1,0,0);
     
+
+    public void samnjiPotez()
+    {
+        brojPoteza--;
+    }
+
+    public string vratiQuote() {
+        string s = "";
+        int nizBezBitnog = 0;
+        if(brojPoteza == 7)
+        {
+            brojBitnihQuoteova--;
+            return quoteBitan[Random.Range(1,7)];
+        }
+        else
+        {
+            if(brojBitnihQuoteova == 0)
+            {
+                return quoteNebitan[Random.Range(1,7)];
+            }
+            else
+            {
+
+            }
+        }
+        return  s;
+    }
     
     public void uradiDmg(Card card)
     {
