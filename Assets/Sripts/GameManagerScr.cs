@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.XR;
 using TMPro;
 using System.Linq;
+using System;
+
 using UnityEngine.UI;
 public class GameManagerScr : MonoBehaviour
 {
@@ -25,7 +27,8 @@ public class GameManagerScr : MonoBehaviour
     Enemy enemy;
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        
         pl = GameObject.Find("Player").GetComponent<Player>();
         enemy = GameObject.Find("Enemy").GetComponent<Enemy>();
         HandObj = GameObject.Find("Hand").transform;
@@ -41,6 +44,7 @@ public class GameManagerScr : MonoBehaviour
 
         queuedText = enemy.vratiQuote();
         StartCoroutine(printText);
+        discard();
     }
 
     // Update is called once per frame
@@ -48,7 +52,8 @@ public class GameManagerScr : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
-            AddCard();
+            //AddCard();
+         //   discard();
         }
         if(Input.GetKeyDown(KeyCode.Space) && queuedText!="")
         {
@@ -82,11 +87,52 @@ public class GameManagerScr : MonoBehaviour
         tempCard.GetComponent<Button>().onClick.AddListener(() => { selectCard(tempCard); });
         tempCard.name="Card "+cardsUsed;
         
-        
+    }
+
+    private void shuffleDeck()
+    {
+       // _rand = new Random();
+         this.deck = deck.OrderBy(_ => Guid.NewGuid()).ToList();
     }
 
     public void discard()
-    {
+   {
+        int brojKarataURuci = HandObj.GetChildCount();
+        shuffleDeck();
+        foreach (Card item in deck)
+        {
+            Debug.Log("deck pre vracanja" + item);
+        }
+        
+        List<Card> karteKojeSeVracajuUDek = new List<Card>();
+        for(int i=0; i<brojKarataURuci; i++)
+        {
+            //Debug.Log("karte iz ruke :  " + HandObj.GetChild(i).GetComponent<Card>());
+            karteKojeSeVracajuUDek.Add(HandObj.GetChild(i).GetComponent<Card>());
+        }
+
+        foreach (Card item in karteKojeSeVracajuUDek)
+        {
+            Debug.Log("Karte iz ruke " + item);
+        }
+        for(int i = brojKarataURuci-1; i>= 0; i--)
+        {
+            Destroy(HandObj.GetChild(i).gameObject);
+        }
+        deck.AddRange(karteKojeSeVracajuUDek);
+
+        //shufle funk
+        shuffleDeck();
+
+        foreach (Card item in deck)
+        {
+            Debug.Log("Karte diskard na kraju " + item);
+        }
+        for (int i = 0; i < pl.vratiMaxBrojKarataURuci(); i++)
+        {
+            AddCard();
+        }
+      
 
     }
 
