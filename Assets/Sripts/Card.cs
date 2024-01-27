@@ -68,6 +68,13 @@ public class Card : MonoBehaviour
         izgledKarte=c.izgledKarte;
 
         cardText.text = c.vratiTekstKarte();
+        //DEBUG ISPIS 
+            cardText.text +="\nDad:"+dadJokeDmg;
+            cardText.text +="\nKeva:"+kevaDmg;
+            cardText.text +="\nAnime:"+animeDmg;
+            cardText.text +="\nRedd:"+redditDmg;
+            cardText.text +="\nMerge:"+mozeDaSeMerguje.ToString();
+        //
         if(izgledKarte!=null)
         {
             cardImage.sprite=c.vratiSliku();

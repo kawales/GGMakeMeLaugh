@@ -76,12 +76,12 @@ public class Enemy : MonoBehaviour
         Debug.Log("Damage received: " + sumDmg);
         health = health - sumDmg;
         Debug.Log("HP: " + health);
-        GameObject.Find("HpBar").GetComponent<SpriteRenderer>().size = new Vector2(3.6f*75f/100,0.653f);
+        GameObject.Find("HpBar").GetComponent<SpriteRenderer>().size = new Vector2(3.6f-(3.6f*health/100f),0.653f);
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject.Find("HpBar").GetComponent<SpriteRenderer>().size = new Vector2(3.6f-(3.6f*health/100f),0.653f);
     }
 
     // Update is called once per frame

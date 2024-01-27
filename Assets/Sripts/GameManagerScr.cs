@@ -109,7 +109,7 @@ public class GameManagerScr : MonoBehaviour
 
     public void discard()
    {
-        int brojKarataURuci = HandObj.GetChildCount();
+        int brojKarataURuci = HandObj.childCount;
         shuffleDeck();
         foreach (Card item in deck)
         {
@@ -191,7 +191,7 @@ public class GameManagerScr : MonoBehaviour
         {
             selected1=c;
         }
-        else if(selected1.GetComponent<Card>().vratiMozeDaSeMerguje())
+        else if(selected1.GetComponent<Card>().vratiMozeDaSeMerguje() && c.GetComponent<Card>().vratiMozeDaSeMerguje())
         {
             highlightSelected(true);
             selected2=c;
@@ -235,6 +235,9 @@ public class GameManagerScr : MonoBehaviour
         {
             enemy.uradiDmg(selected1.GetComponent<Card>());
         }
+        highlightSelected(true);
+        selected1=null;
+        selected2=null;
         StopCoroutine(printText);
         speechBubble.text="";
         queuedText=enemy.vratiQuote();
