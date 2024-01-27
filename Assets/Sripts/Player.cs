@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -56,5 +57,9 @@ public class Player : MonoBehaviour
     public List<Card> vratiDek()
     {
         return this.dekKarata;
+    }
+    public int vratiBrojPoteza()
+    {
+        return this.brojPoteza;
     }
 }
