@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -7,13 +8,13 @@ public class Player : MonoBehaviour
 {
     [SerializeField] List<Card> dekKarata { get; set; }
     [SerializeField] Card[] cards;
-    [SerializeField] int brojKarataURuci = 6;
+    [SerializeField] int maxBrojKarataURuci = 6;
     [SerializeField] int kolikoDiscardovaIma;
     [SerializeField] int brojPoteza;
 
     public void povecajBrojKarataURuci(int zaKolikoGaPocevam)
     {
-        brojKarataURuci += zaKolikoGaPocevam;
+        maxBrojKarataURuci += zaKolikoGaPocevam;
     }
 
     public void smanjiPoteze()
@@ -47,5 +48,18 @@ public class Player : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public int vratiMaxBrojKarataURuci()
+    {
+        return this.maxBrojKarataURuci;
+    }
+    public List<Card> vratiDek()
+    {
+        return this.dekKarata;
+    }
+    public int vratiBrojPoteza()
+    {
+        return this.brojPoteza;
     }
 }
