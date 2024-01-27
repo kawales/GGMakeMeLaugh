@@ -12,7 +12,15 @@ public class Card : MonoBehaviour
     [SerializeField] float dadJokeDmg;
     [SerializeField] Sprite izgledKarte;
     //private Dictionary<string, int> statoviKarte { get; set; }
-    [SerializeField] bool mozeDaSeMerguje;  
+    [SerializeField] bool mozeDaSeMerguje;
+    
+    public void spojiKarte(Card card)
+    {
+        this.kevaDmg += card.kevaDmg;
+        this.redditDmg += card.redditDmg;
+        this.animeDmg += card.animeDmg;
+        this.dadJokeDmg += card.dadJokeDmg;
+    }
 
     //private void napraviMapu(int keva, int reddit, int anime, int dadJoke)
     //{
