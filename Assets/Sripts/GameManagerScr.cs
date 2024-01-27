@@ -7,6 +7,7 @@ using TMPro;
 using System.Linq;
 using System;
 
+using UnityEngine.UI;
 public class GameManagerScr : MonoBehaviour
 {
     [SerializeField]GameObject BaseCards;
@@ -20,8 +21,9 @@ public class GameManagerScr : MonoBehaviour
     int maxCardsInHand=3;
     List<Card> deck;
     IEnumerator printText;
-
-    //private readonly Random _rand;
+    //selected cards
+    GameObject selected1;
+    GameObject selected2;
     // Start is called before the first frame update
     void Start()
     {
@@ -76,6 +78,7 @@ public class GameManagerScr : MonoBehaviour
             tempCard.transform.position=pos;
             
         }
+        tempCard.GetComponent<Button>().onClick.AddListener(() => { selectCard(tempCard); });
         tempCard.name="Card "+cardsUsed;
         
     }
@@ -150,6 +153,59 @@ public class GameManagerScr : MonoBehaviour
         }
         
     }
+
+    public void selectCard(GameObject c)
+    {
+        if(selected1==c)
+        {
+            highlightSelected(true);
+            selected1=null;
+        }
+        else if(selected2==c)
+        {
+            highlightSelected(true);
+            selected2=null;
+        }
+        else if(selected1==null)
+        {
+            selected1=c;
+        }
+        else if(selected1.GetComponent<Card>().vratiMozeDaSeMerguje())
+        {
+            highlightSelected(true);
+            selected2=c;
+        }
+        Debug.Log(selected1);
+        Debug.Log(selected2);
+        highlightSelected();
+        
+    }
+
+    void highlightSelected(bool turnBack = false)
+    {
+        if(turnBack)
+        {
+            if(selected1!=null)
+            {
+                selected1.GetComponent<Image>().color=Color.white;
+            }
+            if(selected2!=null)
+            {
+                selected2.GetComponent<Image>().color=Color.white;
+            }
+            return;
+        }
+        if(selected1!=null)
+        {
+            selected1.GetComponent<Image>().color=Color.yellow;
+        }
+        if(selected2!=null)
+        {
+            selected2.GetComponent<Image>().color=Color.yellow;
+        }
+
+    }
+
 
 
 }

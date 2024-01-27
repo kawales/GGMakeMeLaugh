@@ -59,8 +59,15 @@ public class Card : MonoBehaviour
 
     public void LoadCard(Card c)
     {
-        cardText.text = c.vratiTekstKarte();
+        tekstKarte=c.tekstKarte;
+        dadJokeDmg=c.dadJokeDmg;
+        kevaDmg=c.kevaDmg;
+        animeDmg=c.animeDmg;
+        redditDmg=c.redditDmg;
+        mozeDaSeMerguje=c.mozeDaSeMerguje;
+        izgledKarte=c.izgledKarte;
 
+        cardText.text = c.vratiTekstKarte();
         if(izgledKarte!=null)
         {
             cardImage.sprite=c.vratiSliku();
@@ -92,5 +99,10 @@ public class Card : MonoBehaviour
     public string vratiTekstKarte()
     {
         return this.tekstKarte;
+    }
+
+    public bool vratiMozeDaSeMerguje()
+    {
+        return this.mozeDaSeMerguje;
     }
 }
