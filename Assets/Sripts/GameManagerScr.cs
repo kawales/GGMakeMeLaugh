@@ -234,6 +234,7 @@ public class GameManagerScr : MonoBehaviour
         if(selected1!=null)
         {
             enemy.uradiDmg(selected1.GetComponent<Card>());
+            RemoveCard(selected1);
         }
         highlightSelected(true);
         selected1=null;
@@ -244,6 +245,20 @@ public class GameManagerScr : MonoBehaviour
         printText=spellOutText();
         StartCoroutine(printText);
         
+    }
+
+    public void RemoveCard(GameObject c)
+    {
+        HandObj.transform.Find(c.name).SetParent(null);
+        Destroy(c);
+        HandObj.GetChild(0).transform.position=HandObj.position;
+        for(int i = 1;i<HandObj.childCount;i++)
+        {   
+            //Debug.Log(cardsUsed);
+            Vector3 pos = HandObj.GetChild(i-1).transform.position + Vector3.right*offsetCards;
+            HandObj.GetChild(i).transform.position=pos;
+            
+        }
     }
 
 }

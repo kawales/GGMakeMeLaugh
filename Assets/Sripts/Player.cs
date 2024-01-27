@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] List<Card> dekKarata { get; set; }
     [SerializeField] Card[] cards;
-    [SerializeField] int maxBrojKarataURuci = 6;
+    [SerializeField] int maxBrojKarataURuci = 3;
     [SerializeField] int kolikoDiscardovaIma;
     [SerializeField] int brojPoteza;
 
