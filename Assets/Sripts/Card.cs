@@ -92,4 +92,6 @@ public class Card : MonoBehaviour
     {
         return this.tekstKarte;
     }
+
+
 }
