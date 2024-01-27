@@ -97,7 +97,7 @@ public class GameManagerScr : MonoBehaviour
 
     public void discard()
    {
-        int brojKarataURuci = HandObj.GetChildCount();
+        int brojKarataURuci = HandObj.childCount;
         shuffleDeck();
         foreach (Card item in deck)
         {
