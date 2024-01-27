@@ -4,9 +4,33 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] float health = 100;
+    [SerializeField] Dictionary<string, int> dmgMult;//
+    [SerializeField] float kevaMult;
+    [SerializeField] float redditMult;
+    [SerializeField] float animeMult;
+    [SerializeField] float dadJokeMult;
+    Card c = new Card(2,1,0,0);
+    
+    
+    public void uradiDmg(Card card)
+    {
+      
+        float sumDmg;
+        float kevaDmg = card.vratiKevaDmgStat();
+        float redditDmg = card.vratiRedditDmgStat();
+        float animeDmg = card.vratiAnimeDmgStat();
+        float dadJokeDmg = card.vratiDadjokeDmgStat();
+        sumDmg = kevaDmg*kevaMult + redditDmg*redditMult + animeDmg*animeMult + dadJokeDmg*dadJokeMult;
+        Debug.Log("Damage received: " + sumDmg);
+        health = health - sumDmg;
+        Debug.Log("HP: " + health);
+    }
     // Start is called before the first frame update
     void Start()
     {
+
+        uradiDmg(c);
         
     }
 
