@@ -80,6 +80,11 @@ public class GameManagerScr : MonoBehaviour
         
     }
 
+    public void discard()
+    {
+
+    }
+
     IEnumerator spellOutText()
     {
         while(speechBubble.text.Length<tempText.Length)
