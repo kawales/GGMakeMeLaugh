@@ -25,7 +25,6 @@ public class Enemy : MonoBehaviour
     }
 
     public string vratiQuote() {
-        string s = "";
         
         if(brojPoteza == 7)
         {
@@ -67,7 +66,7 @@ public class Enemy : MonoBehaviour
     
     public void uradiDmg(Card card)
     {
-      
+        
         float sumDmg;
         float kevaDmg = card.vratiKevaDmgStat();
         float redditDmg = card.vratiRedditDmgStat();
