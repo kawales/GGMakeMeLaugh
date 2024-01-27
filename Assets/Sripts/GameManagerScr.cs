@@ -172,6 +172,7 @@ public class GameManagerScr : MonoBehaviour
 
     public void NextTurn()
     {
+        enemy.samnjiPotez();
         //calcCombo
         if(selected1!=null)
         {
