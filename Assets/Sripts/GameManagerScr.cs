@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR;
 using TMPro;
+using System.Linq;
 public class GameManagerScr : MonoBehaviour
 {
     [SerializeField]GameObject BaseCards;
@@ -23,11 +24,12 @@ public class GameManagerScr : MonoBehaviour
         pl = GameObject.Find("Player").GetComponent<Player>();
         HandObj = GameObject.Find("Hand").transform;
         speechBubble = GameObject.Find("SpeechBubbleText").GetComponent<TMP_Text>();
-        //ucitaj deck i max hands
-        for(int i=0;i<3;i++)
+        deck=pl.vratiDek();
+        for(int i=0;i<pl.vratiMaxBrojKarataURuci();i++)
         {
             AddCard();
         }
+        Debug.Log(deck.Count);
         printText=spellOutText();
         StartCoroutine(printText);
     }
@@ -50,20 +52,18 @@ public class GameManagerScr : MonoBehaviour
 
     public void AddCard()
     {
+        Card pulledCard = deck.Last();
+        deck.Remove(deck.Last());
         cardsUsed++;
-        if(HandObj.childCount==0)
-        {
-            GameObject tempCard = Instantiate(BaseCards,HandObj.transform);
-            tempCard.name="Card "+cardsUsed;
-        }
-        else
+        GameObject tempCard = Instantiate(BaseCards,HandObj.transform);
+        if(cardsUsed>1)
         {   
-            Debug.Log(cardsUsed);
+            //Debug.Log(cardsUsed);
             Vector3 pos = HandObj.Find("Card "+(cardsUsed-1)).position + Vector3.right*offsetCards;
-            GameObject tempCard = Instantiate(BaseCards,HandObj.transform);
             tempCard.transform.position=pos;
-            tempCard.name="Card "+cardsUsed;
+            
         }
+        tempCard.name="Card "+cardsUsed;
         
     }
 
