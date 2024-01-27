@@ -23,25 +23,42 @@ public class Player : MonoBehaviour
     }
 
 
-    public void dodajKartuUdek(Card card)
-    {
-        dekKarata.Add(card);
-    }
+    //public void dodajKartuUdek(Card card)
+    //  {
+    //dekKarata.Add(card);
+    // }
     private void dodajUDekAkoJePrazan()
-    {   
+    {
         dekKarata = new List<Card>();
-        for(int i = 0; i < cards.Length; i++)
+        for (int i = 0; i < cards.Length; i++)
         {
             //Debug.Log("karte: " + cards[i]);
             dekKarata.Add(cards[i]);
         }
 
     }
+    private Player() {
+        dodajUDekAkoJePrazan();
+    }
+    private static Player instance = null;
+    public static Player Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = new Player();
+            }
+            return instance;
+        }
+    }
+
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        dodajUDekAkoJePrazan();
+        
     }
 
     // Update is called once per frame

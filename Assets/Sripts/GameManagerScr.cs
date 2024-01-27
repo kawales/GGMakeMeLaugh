@@ -26,7 +26,8 @@ public class GameManagerScr : MonoBehaviour
     GameObject selected2;
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        
         pl = GameObject.Find("Player").GetComponent<Player>();
         HandObj = GameObject.Find("Hand").transform;
         speechBubble = GameObject.Find("SpeechBubbleText").GetComponent<TMP_Text>();
@@ -92,20 +93,22 @@ public class GameManagerScr : MonoBehaviour
     public void discard()
    {
         int brojKarataURuci = HandObj.GetChildCount();
+        shuffleDeck();
         foreach (Card item in deck)
         {
-            //Debug.Log("deck pre vracanja" + item);
+            Debug.Log("deck pre vracanja" + item);
         }
+        
         List<Card> karteKojeSeVracajuUDek = new List<Card>();
         for(int i=0; i<brojKarataURuci; i++)
         {
-           // Debug.Log("karte iz ruke :  " + HandObj.GetChild(i).GetComponent<Card>());
+            //Debug.Log("karte iz ruke :  " + HandObj.GetChild(i).GetComponent<Card>());
             karteKojeSeVracajuUDek.Add(HandObj.GetChild(i).GetComponent<Card>());
         }
 
         foreach (Card item in karteKojeSeVracajuUDek)
         {
-           // Debug.Log("Karte iz ruke " + item);
+            Debug.Log("Karte iz ruke " + item);
         }
         for(int i = brojKarataURuci-1; i>= 0; i--)
         {
@@ -115,9 +118,10 @@ public class GameManagerScr : MonoBehaviour
 
         //shufle funk
         shuffleDeck();
+
         foreach (Card item in deck)
         {
-           // Debug.Log("Karte diskard na kraju " + item);
+            Debug.Log("Karte diskard na kraju " + item);
         }
         for (int i = 0; i < pl.vratiMaxBrojKarataURuci(); i++)
         {
