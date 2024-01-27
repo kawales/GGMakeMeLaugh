@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
         dekKarata = new List<Card>();
         for(int i = 0; i < cards.Length; i++)
         {
-            Debug.Log("karte: " + cards[i]);
+            //Debug.Log("karte: " + cards[i]);
             dekKarata.Add(cards[i]);
         }
 

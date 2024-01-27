@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEngine.XR;
 using TMPro;
 using System.Linq;
+using System;
+
 public class GameManagerScr : MonoBehaviour
 {
     [SerializeField]GameObject BaseCards;
@@ -18,6 +20,8 @@ public class GameManagerScr : MonoBehaviour
     int maxCardsInHand=3;
     List<Card> deck;
     IEnumerator printText;
+
+    //private readonly Random _rand;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +36,7 @@ public class GameManagerScr : MonoBehaviour
         Debug.Log(deck.Count);
         printText=spellOutText();
         StartCoroutine(printText);
+        discard();
     }
 
     // Update is called once per frame
@@ -39,7 +44,8 @@ public class GameManagerScr : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.A))
         {
-            AddCard();
+            //AddCard();
+         //   discard();
         }
         if(Input.GetKeyDown(KeyCode.Space) && tempText!="")
         {
@@ -74,8 +80,47 @@ public class GameManagerScr : MonoBehaviour
         
     }
 
-    public void discard()
+    private void shuffleDeck()
     {
+       // _rand = new Random();
+         this.deck = deck.OrderBy(_ => Guid.NewGuid()).ToList();
+    }
+
+    public void discard()
+   {
+        int brojKarataURuci = HandObj.GetChildCount();
+        foreach (Card item in deck)
+        {
+            //Debug.Log("deck pre vracanja" + item);
+        }
+        List<Card> karteKojeSeVracajuUDek = new List<Card>();
+        for(int i=0; i<brojKarataURuci; i++)
+        {
+           // Debug.Log("karte iz ruke :  " + HandObj.GetChild(i).GetComponent<Card>());
+            karteKojeSeVracajuUDek.Add(HandObj.GetChild(i).GetComponent<Card>());
+        }
+
+        foreach (Card item in karteKojeSeVracajuUDek)
+        {
+           // Debug.Log("Karte iz ruke " + item);
+        }
+        for(int i = brojKarataURuci-1; i>= 0; i--)
+        {
+            Destroy(HandObj.GetChild(i).gameObject);
+        }
+        deck.AddRange(karteKojeSeVracajuUDek);
+
+        //shufle funk
+        shuffleDeck();
+        foreach (Card item in deck)
+        {
+           // Debug.Log("Karte diskard na kraju " + item);
+        }
+        for (int i = 0; i < pl.vratiMaxBrojKarataURuci(); i++)
+        {
+            AddCard();
+        }
+      
 
     }
 

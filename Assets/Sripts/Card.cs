@@ -60,7 +60,7 @@ public class Card : MonoBehaviour
     public void LoadCard(Card c)
     {
         cardText.text = c.vratiTekstKarte();
-        this.tekstKarte = cardText.text;
+
         if(izgledKarte!=null)
         {
             cardImage.sprite=c.vratiSliku();
