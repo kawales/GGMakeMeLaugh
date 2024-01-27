@@ -1061,7 +1061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BaseCards: {fileID: 8305075060036962322, guid: aa35b01436834fa42b4520636e7e3dfc, type: 3}
-  offsetCards: 75
+  offsetCards: 200
 --- !u!1 &1784055269
 GameObject:
   m_ObjectHideFlags: 0

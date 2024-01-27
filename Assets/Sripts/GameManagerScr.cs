@@ -116,10 +116,12 @@ public class GameManagerScr : MonoBehaviour
     {
         if(selected1==c)
         {
+            highlightSelected(true);
             selected1=null;
         }
         else if(selected2==c)
         {
+            highlightSelected(true);
             selected2=null;
         }
         else if(selected1==null)
@@ -128,11 +130,38 @@ public class GameManagerScr : MonoBehaviour
         }
         else if(selected1.GetComponent<Card>().vratiMozeDaSeMerguje())
         {
+            highlightSelected(true);
             selected2=c;
         }
-
         Debug.Log(selected1);
         Debug.Log(selected2);
+        highlightSelected();
+        
+    }
+
+    void highlightSelected(bool turnBack = false)
+    {
+        if(turnBack)
+        {
+            if(selected1!=null)
+            {
+                selected1.GetComponent<Image>().color=Color.white;
+            }
+            if(selected2!=null)
+            {
+                selected2.GetComponent<Image>().color=Color.white;
+            }
+            return;
+        }
+        if(selected1!=null)
+        {
+            selected1.GetComponent<Image>().color=Color.yellow;
+        }
+        if(selected2!=null)
+        {
+            selected2.GetComponent<Image>().color=Color.yellow;
+        }
+
     }
 
 
