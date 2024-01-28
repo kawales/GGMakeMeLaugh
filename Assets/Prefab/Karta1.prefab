@@ -44,14 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a95cfa575515df4eb60f4ac7f2796dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tekstKarte: cale supet}What's a skeleton's least favorite room in the house?     
-    The living room.
+  tekstKarte: <color=gold>dad super </color>
   kevaDmg: 0
   redditDmg: 0
   animeDmg: 0
   dadJokeDmg: 25
   general: 0
-  izgledKarte: {fileID: 0}
+  izgledKarte: {fileID: 21300000, guid: 655b61c7c472b8a4d8c2ca4788b66c81, type: 3}
   mozeDaSeMerguje: 0
   cardText: {fileID: 0}
   cardImage: {fileID: 0}
