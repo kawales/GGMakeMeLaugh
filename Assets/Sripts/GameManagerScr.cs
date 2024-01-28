@@ -8,7 +8,6 @@ using System.Linq;
 using System;
 
 using UnityEngine.UI;
-using UnityEditor.SearchService;
 using UnityEngine.SceneManagement;
 public class GameManagerScr : MonoBehaviour
 {
@@ -48,6 +47,7 @@ public class GameManagerScr : MonoBehaviour
         HandObj = GameObject.Find("Hand").transform;
         speechBubble = GameObject.Find("SpeechBubbleText").GetComponent<TMP_Text>();
         deck=pl.vratiDek();
+        shuffleDeck();
         for(int i=0;i<pl.vratiMaxBrojKarataURuci()-2;i++)
         {
             AddCard();
@@ -87,7 +87,7 @@ public class GameManagerScr : MonoBehaviour
         //int index = selected2.transform.GetSiblingIndex();
 
         karta1.spojiKarte(karta2);
-        Destroy(HandObj.Find(selected2.transform.name).gameObject);
+        RemoveCard(selected2);
         if(selected2 == null)
         {
             Debug.Log("obrisan drugi");
