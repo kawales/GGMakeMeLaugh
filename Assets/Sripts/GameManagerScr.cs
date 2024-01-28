@@ -249,12 +249,13 @@ public class GameManagerScr : MonoBehaviour
         if(selected1!=null && selected2!=null)
         {
             merge();
-        }
-        {
+            
+        
             enemy.uradiDmg(selected1.GetComponent<Card>(), mult);
+            mult = 1.0f;
             RemoveCard(selected1);
         }
-        if(selected1!=null)
+        else if(selected1!=null)
         {
             enemy.uradiDmg(selected1.GetComponent<Card>(), mult);
             mult = 1.0f;
