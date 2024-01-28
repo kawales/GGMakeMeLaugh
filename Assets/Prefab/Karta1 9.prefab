@@ -44,12 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a95cfa575515df4eb60f4ac7f2796dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tekstKarte: <color=blue> rare</color>rare 3
+  tekstKarte: <color=blue> rare</color>
   kevaDmg: 0
   redditDmg: 0
   animeDmg: 0
   dadJokeDmg: 0
-  general: 13
+  general: 19
   izgledKarte: {fileID: 21300000, guid: 6c4f5344f1d6be443afdbe259902a98f, type: 3}
   mozeDaSeMerguje: 1
   cardText: {fileID: 0}
