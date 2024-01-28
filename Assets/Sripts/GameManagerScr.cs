@@ -25,6 +25,7 @@ public class GameManagerScr : MonoBehaviour
     GameObject selected1;
     GameObject selected2;
     Enemy enemy;
+    float mult = 1.0f;
     // Start is called before the first frame update 
     void Start()
     {   
@@ -68,6 +69,7 @@ public class GameManagerScr : MonoBehaviour
     }
     public void merge()
     {
+        mult = 1.2f;
         Card karta1 = selected1.GetComponent<Card>();
         Card karta2 = selected2.GetComponent<Card>();
         //int index = selected2.transform.GetSiblingIndex();
@@ -247,10 +249,16 @@ public class GameManagerScr : MonoBehaviour
         if(selected1!=null && selected2!=null)
         {
             merge();
+            
+        
+            enemy.uradiDmg(selected1.GetComponent<Card>(), mult);
+            mult = 1.0f;
+            RemoveCard(selected1);
         }
-        if(selected1!=null)
+        else if(selected1!=null)
         {
-            enemy.uradiDmg(selected1.GetComponent<Card>());
+            enemy.uradiDmg(selected1.GetComponent<Card>(), mult);
+            mult = 1.0f;
             RemoveCard(selected1);
         }
         highlightSelected(true);
