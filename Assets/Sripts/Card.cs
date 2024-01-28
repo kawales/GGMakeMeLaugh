@@ -18,6 +18,7 @@ public class Card : MonoBehaviour
     //Vizualni deo
     [SerializeField]TMP_Text cardText;
     [SerializeField]Image cardImage;
+    [SerializeField]Sprite mergableLook;
     public void spojiKarte(Card card)
     {
         this.kevaDmg += card.kevaDmg;
@@ -74,6 +75,14 @@ public class Card : MonoBehaviour
             cardText.text +="\nAnime:"+animeDmg;
             cardText.text +="\nRedd:"+redditDmg;
             cardText.text +="\nMerge:"+mozeDaSeMerguje.ToString();
+            if(izgledKarte==null)
+            {
+                transform.GetChild(1).GetComponent<Image>().color=Color.clear;
+            }
+            if(mozeDaSeMerguje)
+            {
+                GetComponent<Image>().sprite=mergableLook;
+            }
         //
         if(izgledKarte!=null)
         {
