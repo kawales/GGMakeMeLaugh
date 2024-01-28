@@ -55,5 +55,10 @@ MonoBehaviour:
   - {fileID: 5835027250293031784, guid: e2e94ab026e8db04b9d5a9298498629c, type: 3}
   - {fileID: 5835027250293031784, guid: b0261f44aa9d38a459f5fa777feb1545, type: 3}
   - {fileID: 5835027250293031784, guid: fee6b6318fcd2f741803997af49b6a74, type: 3}
+  - {fileID: 5835027250293031784, guid: 55c0b648922e0ce4396099b403c85fe8, type: 3}
+  - {fileID: 5835027250293031784, guid: 6ea1e11255f04d0469aaa38e2c9f6e64, type: 3}
+  - {fileID: 5835027250293031784, guid: c5e2beb17cf132545b938577fdd44580, type: 3}
+  - {fileID: 5835027250293031784, guid: 0fcaf1f7824dab9438bd0fcb1d3a816f, type: 3}
+  - {fileID: 5835027250293031784, guid: 222fbb1fdcdae97499ea6e3b319b2f5c, type: 3}
   maxBrojKarataURuci: 5
   kolikoDiscardovaIma: 0
