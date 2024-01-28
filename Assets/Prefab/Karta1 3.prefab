@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a95cfa575515df4eb60f4ac7f2796dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tekstKarte: 3
+  tekstKarte: cale negativna
   kevaDmg: 3
-  redditDmg: 3
-  animeDmg: 1
+  redditDmg: 1
+  animeDmg: 5
   dadJokeDmg: 0
   izgledKarte: {fileID: 0}
   mozeDaSeMerguje: 0
