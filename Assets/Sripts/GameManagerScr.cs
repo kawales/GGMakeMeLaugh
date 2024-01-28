@@ -78,8 +78,12 @@ public class GameManagerScr : MonoBehaviour
             Debug.Log("obrisan drugi");
         }
     }
-    public void AddCard()
+    public void AddCard(bool PulledCard=false)
     {
+        if(PulledCard)
+        {
+            enemy.uradiFixedDmg(-5);
+        }
         if(deck.Count==0)
         {
             Debug.Log("EMPTY DECK");
@@ -255,12 +259,19 @@ public class GameManagerScr : MonoBehaviour
     {
         HandObj.transform.Find(c.name).SetParent(null);
         Destroy(c);
+        cardsUsed--;
+        if(HandObj.childCount<=0)
+        {
+            return;
+        }
         HandObj.GetChild(0).transform.position=HandObj.position;
+        HandObj.GetChild(0).transform.name="Card "+(1);
         for(int i = 1;i<HandObj.childCount;i++)
         {   
             //Debug.Log(cardsUsed);
             Vector3 pos = HandObj.GetChild(i-1).transform.position + Vector3.right*offsetCards;
             HandObj.GetChild(i).transform.position=pos;
+            HandObj.GetChild(i).transform.name="Card "+(i+1);
             
         }
     }
