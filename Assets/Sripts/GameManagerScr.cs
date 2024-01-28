@@ -67,9 +67,9 @@ public class GameManagerScr : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.A))
         {
             //AddCard();
-            //   discard();
-            merge();
-            selected1.GetComponent<Card>().LoadCard(selected1.GetComponent<Card>());
+               discard();
+           // merge();
+            //selected1.GetComponent<Card>().LoadCard(selected1.GetComponent<Card>());
         }
         if(Input.GetKeyDown(KeyCode.Space) && queuedText!="")
         {
