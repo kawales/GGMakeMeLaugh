@@ -66,7 +66,7 @@ public class Enemy : MonoBehaviour
         
     }
     
-    public void uradiDmg(Card card)
+    public void uradiDmg(Card card, float mult)
     {
         
         float sumDmg;
@@ -75,6 +75,7 @@ public class Enemy : MonoBehaviour
         float animeDmg = card.vratiAnimeDmgStat();
         float dadJokeDmg = card.vratiDadjokeDmgStat();
         sumDmg = kevaDmg*kevaMult + redditDmg*redditMult + animeDmg*animeMult + dadJokeDmg*dadJokeMult;
+        sumDmg = sumDmg * mult;
         Debug.Log("Damage received: " + sumDmg);
         health = health - sumDmg;
         Debug.Log("HP: " + health);
