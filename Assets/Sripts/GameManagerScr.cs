@@ -18,7 +18,7 @@ public class GameManagerScr : MonoBehaviour
     string queuedText= "The <i>quick brown fox</i> jumps over the <b>lazy dog</b>.";
     int cardsUsed=0;
     float textTempo=0.05f;
-    int maxCardsInHand=3;
+    int maxCardsInHand;
     List<Card> deck;
     IEnumerator printText;
     //selected cards
@@ -30,11 +30,12 @@ public class GameManagerScr : MonoBehaviour
     {   
         
         pl = GameObject.Find("Player").GetComponent<Player>();
+        maxCardsInHand=pl.vratiMaxBrojKarataURuci();
         enemy = GameObject.Find("Enemy").GetComponent<Enemy>();
         HandObj = GameObject.Find("Hand").transform;
         speechBubble = GameObject.Find("SpeechBubbleText").GetComponent<TMP_Text>();
         deck=pl.vratiDek();
-        for(int i=0;i<pl.vratiMaxBrojKarataURuci();i++)
+        for(int i=0;i<pl.vratiMaxBrojKarataURuci()-2;i++)
         {
             AddCard();
         }
@@ -80,6 +81,11 @@ public class GameManagerScr : MonoBehaviour
     }
     public void AddCard(bool PulledCard=false)
     {
+        // ne moze dalje se vuce
+        if(HandObj.childCount>=maxCardsInHand)
+        {
+            return;
+        }
         if(PulledCard)
         {
             enemy.uradiFixedDmg(-5);
@@ -104,6 +110,7 @@ public class GameManagerScr : MonoBehaviour
         }
         tempCard.GetComponent<Button>().onClick.AddListener(() => { selectCard(tempCard); });
         tempCard.name="Card "+cardsUsed;
+        GameObject.Find("CardsLeft").GetComponent<TMP_Text>().text="Cards left:"+deck.Count;
         
     }
 
@@ -237,6 +244,14 @@ public class GameManagerScr : MonoBehaviour
     public void NextTurn()
     {
         //calcCombo
+        if(selected1!=null && selected2!=null)
+        {
+            merge();
+        }
+        {
+            enemy.uradiDmg(selected1.GetComponent<Card>());
+            RemoveCard(selected1);
+        }
         if(selected1!=null)
         {
             enemy.uradiDmg(selected1.GetComponent<Card>());
