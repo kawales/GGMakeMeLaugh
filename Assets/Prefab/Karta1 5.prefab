@@ -50,7 +50,7 @@ MonoBehaviour:
   animeDmg: 0
   dadJokeDmg: 0
   general: 22
-  izgledKarte: {fileID: 21300000, guid: 9273da38350a13b4a9560f2e5914ae1b, type: 3}
+  izgledKarte: {fileID: 21300000, guid: a22be0ee62237994a9d44f25c172a91d, type: 3}
   mozeDaSeMerguje: 1
   cardText: {fileID: 0}
   cardImage: {fileID: 0}

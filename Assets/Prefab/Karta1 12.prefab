@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a95cfa575515df4eb60f4ac7f2796dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tekstKarte: common 3
+  tekstKarte: common 3}Why did the scarecrow win an award? Because he was outstanding
+    in his field.
   kevaDmg: 0
   redditDmg: 0
   animeDmg: 0
