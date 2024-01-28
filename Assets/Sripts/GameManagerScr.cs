@@ -54,7 +54,7 @@ public class GameManagerScr : MonoBehaviour
         }
         //Debug.Log(deck.Count);
         printText=spellOutText();
-        GameObject.Find("TurnsLeft").GetComponent<TMP_Text>().text=pl.vratiBrojPoteza().ToString();
+        GameObject.Find("TurnsLeft").GetComponent<TMP_Text>().text=pl.vratiBrojPoteza().ToString()+"minutes left";;
 
         queuedText = enemy.vratiQuote();
         StartCoroutine(printText);
@@ -192,7 +192,10 @@ public class GameManagerScr : MonoBehaviour
                 speechBubble.text += queuedText[speechBubble.text.Length];
                 speechBubble.text += queuedText[speechBubble.text.Length];
             }
-            speechBubble.text += queuedText[speechBubble.text.Length];
+            else{
+                speechBubble.text += queuedText[speechBubble.text.Length];
+            }
+            
             yield return new WaitForSeconds(textTempo);
         }
         
@@ -254,7 +257,7 @@ public class GameManagerScr : MonoBehaviour
     public void NextTurn()
     {
         pl.smanjiBrojPoteza();
-        GameObject.Find("TurnsLeft").GetComponent<TMP_Text>().text=pl.vratiBrojPoteza().ToString();
+        GameObject.Find("TurnsLeft").GetComponent<TMP_Text>().text=pl.vratiBrojPoteza().ToString()+"minutes left";
         //calcCombo
         if(selected1!=null && selected2!=null)
         {
@@ -271,9 +274,10 @@ public class GameManagerScr : MonoBehaviour
             mult = 1.0f;
             RemoveCard(selected1);
         }
-        if(enemy.vratiHealth()<=0)
+        if(enemy.vratiHealth()<=4)
         {
-            SceneManager.LoadScene(0);
+            Player.levelN+=1;
+            SceneManager.LoadScene(Player.levelN);
         }
         highlightSelected(true);
         selected1=null;

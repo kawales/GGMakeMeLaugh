@@ -1511,14 +1511,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 51
-  kevaMult: 5
-  redditMult: 5
-  animeMult: 5
-  dadJokeMult: 5
+  kevaMult: 1
+  redditMult: -1
+  animeMult: -1
+  dadJokeMult: 2
   quoteBitan:
   - I love a good ol' knock knock joke
   - Those japanese <b>cartoons</b> sure seem weird...
-  - Bitan3
+  - I love a good ol' knock knock joke
   quoteNebitan:
   - Who left all the lights on? Are we running a hotel?
   - I spotted a great yard sale. Thought you might want to know!
@@ -1837,8 +1837,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 344581273}
   - {fileID: 522380646}
+  - {fileID: 344581273}
   m_Father: {fileID: 2039044416}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2218,7 +2218,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: -2.2783203}
+  m_margin: {x: -387.02173, y: 0, z: -74.071045, w: -2.2783203}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
