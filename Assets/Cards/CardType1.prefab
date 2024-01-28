@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 17
+  m_fontSizeBase: 17
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -168,8 +168,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.7605, y: 69.1}
-  m_SizeDelta: {x: 127.8416, y: 76.0359}
+  m_AnchoredPosition: {x: 0.000001967, y: -40.1}
+  m_SizeDelta: {x: 127.8416, y: 107.12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2653511255945632398
 CanvasRenderer:
@@ -429,6 +429,7 @@ MonoBehaviour:
   redditDmg: 0
   animeDmg: 0
   dadJokeDmg: 0
+  general: 0
   izgledKarte: {fileID: 0}
   mozeDaSeMerguje: 0
   cardText: {fileID: 8359652242120300246}
