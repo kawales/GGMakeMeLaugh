@@ -253,10 +253,6 @@ public class GameManagerScr : MonoBehaviour
 
     public void NextTurn()
     {
-        if(enemy.vratiHealth()<=0)
-        {
-            SceneManager.LoadScene(1);
-        }
         pl.smanjiBrojPoteza();
         GameObject.Find("TurnsLeft").GetComponent<TMP_Text>().text=pl.vratiBrojPoteza().ToString();
         //calcCombo
@@ -274,6 +270,10 @@ public class GameManagerScr : MonoBehaviour
             enemy.uradiDmg(selected1.GetComponent<Card>(), mult);
             mult = 1.0f;
             RemoveCard(selected1);
+        }
+        if(enemy.vratiHealth()<=0)
+        {
+            SceneManager.LoadScene(0);
         }
         highlightSelected(true);
         selected1=null;
