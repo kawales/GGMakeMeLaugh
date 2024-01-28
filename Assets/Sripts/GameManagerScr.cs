@@ -8,6 +8,8 @@ using System.Linq;
 using System;
 
 using UnityEngine.UI;
+using UnityEditor.SearchService;
+using UnityEngine.SceneManagement;
 public class GameManagerScr : MonoBehaviour
 {
     [SerializeField]GameObject BaseCards;
@@ -29,9 +31,19 @@ public class GameManagerScr : MonoBehaviour
     // Start is called before the first frame update 
     void Start()
     {   
-        
-        pl = GameObject.Find("Player").GetComponent<Player>();
+        if(GameObject.Find("Player")!=null)
+        {
+           pl = GameObject.Find("Player").GetComponent<Player>();
+        }
+        else
+        {
+            Instantiate(Resources.Load("Player")).name="Player";
+            //temp.name="Player";
+            pl = GameObject.Find("Player").GetComponent<Player>();
+        }
+        Debug.Log(pl);
         maxCardsInHand=pl.vratiMaxBrojKarataURuci();
+        Debug.Log(maxCardsInHand);
         enemy = GameObject.Find("Enemy").GetComponent<Enemy>();
         HandObj = GameObject.Find("Hand").transform;
         speechBubble = GameObject.Find("SpeechBubbleText").GetComponent<TMP_Text>();
@@ -42,7 +54,7 @@ public class GameManagerScr : MonoBehaviour
         }
         //Debug.Log(deck.Count);
         printText=spellOutText();
-
+        GameObject.Find("TurnsLeft").GetComponent<TMP_Text>().text=pl.vratiBrojPoteza().ToString();
 
         queuedText = enemy.vratiQuote();
         StartCoroutine(printText);
@@ -241,6 +253,12 @@ public class GameManagerScr : MonoBehaviour
 
     public void NextTurn()
     {
+        if(enemy.vratiHealth()<=0)
+        {
+            SceneManager.LoadScene(1);
+        }
+        pl.smanjiBrojPoteza();
+        GameObject.Find("TurnsLeft").GetComponent<TMP_Text>().text=pl.vratiBrojPoteza().ToString();
         //calcCombo
         if(selected1!=null && selected2!=null)
         {
