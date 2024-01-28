@@ -12,6 +12,7 @@ public class Card : MonoBehaviour
     [SerializeField] float redditDmg;
     [SerializeField] float animeDmg;
     [SerializeField] float dadJokeDmg;
+    [SerializeField] float general;
     [SerializeField] Sprite izgledKarte;
     //private Dictionary<string, int> statoviKarte { get; set; }
     [SerializeField] bool mozeDaSeMerguje;
@@ -25,6 +26,7 @@ public class Card : MonoBehaviour
         this.redditDmg += card.redditDmg;
         this.animeDmg += card.animeDmg;
         this.dadJokeDmg += card.dadJokeDmg;
+        this.general += card.general;
     }
 
     //private void napraviMapu(int keva, int reddit, int anime, int dadJoke)
@@ -65,6 +67,7 @@ public class Card : MonoBehaviour
         kevaDmg=c.kevaDmg;
         animeDmg=c.animeDmg;
         redditDmg=c.redditDmg;
+        general = c.general;
         mozeDaSeMerguje=c.mozeDaSeMerguje;
         izgledKarte=c.izgledKarte;
 
@@ -120,5 +123,9 @@ public class Card : MonoBehaviour
     public bool vratiMozeDaSeMerguje()
     {
         return this.mozeDaSeMerguje;
+    }
+    public float vratiGeneral()
+    {
+        return this.general;
     }
 }
