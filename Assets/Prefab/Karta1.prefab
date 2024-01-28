@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a95cfa575515df4eb60f4ac7f2796dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tekstKarte: 1
+  tekstKarte: cale efektivna
   kevaDmg: 2
   redditDmg: 0
   animeDmg: -1
