@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] string[] quoteNebitan;
     [SerializeField] int brojPoteza;
     [SerializeField] int brojBitnihQuoteova;
-    private float procenatZaBitanQuote = 80f;
+    [SerializeField]private float procenatZaBitanQuote = 80f;
    // Card c = new Card(2,1,0,0);
     private int nizBezBitnog = 0;
 
@@ -48,6 +48,7 @@ public class Enemy : MonoBehaviour
                 {
                     if (Random.Range(0f, 100f) < procenatZaBitanQuote)
                     {
+                        nizBezBitnog = 0;
                         procenatZaBitanQuote -= 20f;
                         brojBitnihQuoteova--;
                         return quoteBitan[Random.Range(0, quoteBitan.Length)];
