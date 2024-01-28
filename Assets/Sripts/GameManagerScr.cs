@@ -248,10 +248,6 @@ public class GameManagerScr : MonoBehaviour
         {
             merge();
         }
-        {
-            enemy.uradiDmg(selected1.GetComponent<Card>());
-            RemoveCard(selected1);
-        }
         if(selected1!=null)
         {
             enemy.uradiDmg(selected1.GetComponent<Card>());
