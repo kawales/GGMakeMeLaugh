@@ -84,18 +84,14 @@ public class GameManagerScr : MonoBehaviour
     public void AddCard(bool PulledCard=false)
     {
         // ne moze dalje se vuce
-        if(HandObj.childCount>=maxCardsInHand)
+        if(HandObj.childCount>=maxCardsInHand || deck.Count==0)
         {
+            Debug.Log("EMPTY DECK OR FULL HAND");
             return;
         }
         if(PulledCard)
         {
             enemy.uradiFixedDmg(-5);
-        }
-        if(deck.Count==0)
-        {
-            Debug.Log("EMPTY DECK");
-            return;
         }
         Card pulledCard = deck.Last();
         deck.Remove(deck.Last());
