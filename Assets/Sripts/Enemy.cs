@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -95,6 +96,11 @@ public class Enemy : MonoBehaviour
         health-=dmg;
         ChangeMood();
     }
+
+    public float vratiHealth()
+    {
+        return health;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -113,6 +119,7 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
+
         if(health<=25)
         {
             GetComponent<SpriteRenderer>().sprite=moodSprite[2];

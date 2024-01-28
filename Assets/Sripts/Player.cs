@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] Card[] cards;
     [SerializeField] int maxBrojKarataURuci = 3;
     [SerializeField] int kolikoDiscardovaIma;
-    [SerializeField] int brojPoteza;
+    [SerializeField]public static int brojPoteza=30;
 
     public void povecajBrojKarataURuci(int zaKolikoGaPocevam)
     {
@@ -64,6 +64,11 @@ public class Player : MonoBehaviour
     }
     public int vratiBrojPoteza()
     {
-        return this.brojPoteza;
+        return brojPoteza;
+    }
+
+    public void smanjiBrojPoteza()
+    {
+        brojPoteza--;
     }
 }
