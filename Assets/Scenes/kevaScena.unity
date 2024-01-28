@@ -1509,20 +1509,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f55b37136a93b0840b6d55c1e97e9108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 85
+  health: 80
   kevaMult: 2
   redditMult: -1
   animeMult: -1
   dadJokeMult: 0
   quoteBitan:
-  - <i>Gosh</i> I <b>hate</b> dad jokes.
-  - Mom jokes don't really do it for me...
-  - <i>Gosh</i> I <b>hate</b> dad jokes.
+  - My son spends too much time on that <b>read it</b> site..
+  - Dad  jokes don't really do it for me...
+  - My daughter watches too many cartoons.
   quoteNebitan:
-  - That anime soundtrack is stuck in my head; <b>it's so catchy!</b>
-  - Do you prefer subbed or dubbed? I'm all about the original voices.
-  - <i>Talking about her cat...</i>
-  - That anime soundtrack is stuck in my head; <b>it's so catchy!</b>
+  - Did you remember to grab your jacket?
+  - "\"I'm not running a hotel here \u2013 turn off the lights when you leave the
+    hallway."
+  - I can't have too many cats; my heart has room for all of them.
+  - Cats understand me; people, not so much.
   brojPoteza: 7
   brojBitnihQuoteova: 2
   procenatZaBitanQuote: 20
