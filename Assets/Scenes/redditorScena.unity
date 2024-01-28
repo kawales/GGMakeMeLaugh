@@ -1661,9 +1661,9 @@ MonoBehaviour:
   brojBitnihQuoteova: 2
   procenatZaBitanQuote: 20
   moodSprite:
-  - {fileID: 21300000, guid: 41680633269ad5e46bec275dd86720c7, type: 3}
-  - {fileID: 21300000, guid: 29540fcb92334d54facd9e2ec15b8869, type: 3}
-  - {fileID: 21300000, guid: 88fc84de70ec4f841942748083dd0736, type: 3}
+  - {fileID: 21300000, guid: 8fda44a91bbb1de439e72ea30ff6a578, type: 3}
+  - {fileID: 21300000, guid: 8fda44a91bbb1de439e72ea30ff6a578, type: 3}
+  - {fileID: 21300000, guid: 8fda44a91bbb1de439e72ea30ff6a578, type: 3}
 --- !u!1 &1300341517
 GameObject:
   m_ObjectHideFlags: 0
