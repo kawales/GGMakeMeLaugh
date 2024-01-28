@@ -73,11 +73,11 @@ public class Card : MonoBehaviour
 
         cardText.text = c.vratiTekstKarte();
         //DEBUG ISPIS 
-            cardText.text +="\nDad:"+dadJokeDmg;
-            cardText.text +="\nKeva:"+kevaDmg;
-            cardText.text +="\nAnime:"+animeDmg;
-            cardText.text +="\nRedd:"+redditDmg;
-            cardText.text +="\nMerge:"+mozeDaSeMerguje.ToString();
+           // cardText.text +="\nDad:"+dadJokeDmg;
+           // cardText.text +="\nKeva:"+kevaDmg;
+            //cardText.text +="\nAnime:"+animeDmg;
+           // cardText.text +="\nRedd:"+redditDmg;
+           // cardText.text +="\nMerge:"+mozeDaSeMerguje.ToString();
             if(izgledKarte==null)
             {
                 transform.GetChild(1).GetComponent<Image>().color=Color.clear;
