@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/redditorScena.unity
     guid: ff6dd983be1981f438f797c55b939645
   - enabled: 1
+    path: Assets/Scenes/wonGame.unity
+    guid: 08c4d09d8a84ad94e8a423d2c8ec762a
+  - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: 0aaf97f7826cd6b4c8fd5a6df7f9eef7
   m_configObjects: {}

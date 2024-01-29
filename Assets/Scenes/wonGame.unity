@@ -374,9 +374,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'GAME OVER
+  m_text: 'Congrats
 
-    You have missed your bus...'
+    You have made it onto the bus!!!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4fd0b8bb9910a14489bb5567eaf45dd5, type: 2}
   m_sharedMaterial: {fileID: 6495182719537015264, guid: 4fd0b8bb9910a14489bb5567eaf45dd5, type: 2}

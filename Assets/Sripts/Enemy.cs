@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -85,6 +86,16 @@ public class Enemy : MonoBehaviour
         sumDmg = kevaDmg*kevaMult + redditDmg*redditMult + animeDmg*animeMult + dadJokeDmg*dadJokeMult + generalDmg;
         sumDmg = sumDmg * mult;
         Debug.Log("Damage received: " + sumDmg);
+        if(sumDmg<=0)
+        {
+            GetComponent<AudioSource>().clip=Resources.Load<AudioClip>("cricket");
+            GetComponent<AudioSource>().Play();
+        }
+        if(sumDmg>35)
+        {
+             GetComponent<AudioSource>().clip=Resources.Load<AudioClip>("laugh");
+            GetComponent<AudioSource>().Play();
+        }
         health = health - sumDmg;
         Debug.Log("HP: " + health);
         
