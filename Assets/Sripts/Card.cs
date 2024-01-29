@@ -12,18 +12,21 @@ public class Card : MonoBehaviour
     [SerializeField] float redditDmg;
     [SerializeField] float animeDmg;
     [SerializeField] float dadJokeDmg;
+    [SerializeField] float general;
     [SerializeField] Sprite izgledKarte;
     //private Dictionary<string, int> statoviKarte { get; set; }
     [SerializeField] bool mozeDaSeMerguje;
     //Vizualni deo
     [SerializeField]TMP_Text cardText;
     [SerializeField]Image cardImage;
+    [SerializeField]Sprite mergableLook;
     public void spojiKarte(Card card)
     {
         this.kevaDmg += card.kevaDmg;
         this.redditDmg += card.redditDmg;
         this.animeDmg += card.animeDmg;
         this.dadJokeDmg += card.dadJokeDmg;
+        this.general += card.general;
     }
 
     //private void napraviMapu(int keva, int reddit, int anime, int dadJoke)
@@ -64,16 +67,25 @@ public class Card : MonoBehaviour
         kevaDmg=c.kevaDmg;
         animeDmg=c.animeDmg;
         redditDmg=c.redditDmg;
+        general = c.general;
         mozeDaSeMerguje=c.mozeDaSeMerguje;
         izgledKarte=c.izgledKarte;
 
         cardText.text = c.vratiTekstKarte();
         //DEBUG ISPIS 
-            cardText.text +="\nDad:"+dadJokeDmg;
-            cardText.text +="\nKeva:"+kevaDmg;
-            cardText.text +="\nAnime:"+animeDmg;
-            cardText.text +="\nRedd:"+redditDmg;
-            cardText.text +="\nMerge:"+mozeDaSeMerguje.ToString();
+           // cardText.text +="\nDad:"+dadJokeDmg;
+           // cardText.text +="\nKeva:"+kevaDmg;
+            //cardText.text +="\nAnime:"+animeDmg;
+           // cardText.text +="\nRedd:"+redditDmg;
+           // cardText.text +="\nMerge:"+mozeDaSeMerguje.ToString();
+            if(izgledKarte==null)
+            {
+                transform.GetChild(1).GetComponent<Image>().color=Color.clear;
+            }
+            if(mozeDaSeMerguje)
+            {
+                GetComponent<Image>().sprite=mergableLook;
+            }
         //
         if(izgledKarte!=null)
         {
@@ -111,5 +123,9 @@ public class Card : MonoBehaviour
     public bool vratiMozeDaSeMerguje()
     {
         return this.mozeDaSeMerguje;
+    }
+    public float vratiGeneral()
+    {
+        return this.general;
     }
 }

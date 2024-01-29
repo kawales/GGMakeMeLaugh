@@ -6,6 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/caleScena.unity
+    guid: f7a3f15a5efc30f4dbdd1875583939cd
+  - enabled: 1
+    path: Assets/Scenes/animeScena.unity
+    guid: fa6765c814e66324d8bfeea5bd46fda1
+  - enabled: 1
+    path: Assets/Scenes/kevaScena.unity
+    guid: 1952bee7b72c84a4dbc8cf2ecc29e882
+  - enabled: 1
+    path: Assets/Scenes/redditorScena.unity
+    guid: ff6dd983be1981f438f797c55b939645
+  - enabled: 1
+    path: Assets/Scenes/wonGame.unity
+    guid: 08c4d09d8a84ad94e8a423d2c8ec762a
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 0aaf97f7826cd6b4c8fd5a6df7f9eef7
   m_configObjects: {}

@@ -8,6 +8,7 @@ using System.Linq;
 using System;
 
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class GameManagerScr : MonoBehaviour
 {
     [SerializeField]GameObject BaseCards;
@@ -17,30 +18,43 @@ public class GameManagerScr : MonoBehaviour
     Player pl;
     string queuedText= "The <i>quick brown fox</i> jumps over the <b>lazy dog</b>.";
     int cardsUsed=0;
-    float textTempo=0.1f;
-    int maxCardsInHand=3;
+    float textTempo=0.05f;
+    int maxCardsInHand;
     List<Card> deck;
     IEnumerator printText;
     //selected cards
     GameObject selected1;
     GameObject selected2;
     Enemy enemy;
+    float mult = 1.0f;
     // Start is called before the first frame update 
     void Start()
     {   
-        
-        pl = GameObject.Find("Player").GetComponent<Player>();
+        if(GameObject.Find("Player")!=null)
+        {
+           pl = GameObject.Find("Player").GetComponent<Player>();
+        }
+        else
+        {
+            Instantiate(Resources.Load("Player")).name="Player";
+            //temp.name="Player";
+            pl = GameObject.Find("Player").GetComponent<Player>();
+        }
+        Debug.Log(pl);
+        maxCardsInHand=pl.vratiMaxBrojKarataURuci();
+        Debug.Log(maxCardsInHand);
         enemy = GameObject.Find("Enemy").GetComponent<Enemy>();
         HandObj = GameObject.Find("Hand").transform;
         speechBubble = GameObject.Find("SpeechBubbleText").GetComponent<TMP_Text>();
         deck=pl.vratiDek();
-        for(int i=0;i<pl.vratiMaxBrojKarataURuci();i++)
+        shuffleDeck();
+        for(int i=0;i<pl.vratiMaxBrojKarataURuci()-2;i++)
         {
             AddCard();
         }
         //Debug.Log(deck.Count);
         printText=spellOutText();
-
+        GameObject.Find("TurnsLeft").GetComponent<TMP_Text>().text=pl.vratiBrojPoteza().ToString()+"minutes left";;
 
         queuedText = enemy.vratiQuote();
         StartCoroutine(printText);
@@ -53,7 +67,9 @@ public class GameManagerScr : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.A))
         {
             //AddCard();
-         //   discard();
+               discard();
+           // merge();
+            //selected1.GetComponent<Card>().LoadCard(selected1.GetComponent<Card>());
         }
         if(Input.GetKeyDown(KeyCode.Space) && queuedText!="")
         {
@@ -65,23 +81,29 @@ public class GameManagerScr : MonoBehaviour
     }
     public void merge()
     {
+        mult = 1.2f;
         Card karta1 = selected1.GetComponent<Card>();
         Card karta2 = selected2.GetComponent<Card>();
         //int index = selected2.transform.GetSiblingIndex();
 
         karta1.spojiKarte(karta2);
-        Destroy(HandObj.Find(selected2.transform.name).gameObject);
+        RemoveCard(selected2);
         if(selected2 == null)
         {
             Debug.Log("obrisan drugi");
         }
     }
-    public void AddCard()
+    public void AddCard(bool PulledCard=false)
     {
-        if(deck.Count==0)
+        // ne moze dalje se vuce
+        if(HandObj.childCount>=maxCardsInHand || deck.Count==0)
         {
-            Debug.Log("EMPTY DECK");
+            Debug.Log("EMPTY DECK OR FULL HAND");
             return;
+        }
+        if(PulledCard)
+        {
+            enemy.uradiFixedDmg(-5);
         }
         Card pulledCard = deck.Last();
         deck.Remove(deck.Last());
@@ -98,6 +120,7 @@ public class GameManagerScr : MonoBehaviour
         }
         tempCard.GetComponent<Button>().onClick.AddListener(() => { selectCard(tempCard); });
         tempCard.name="Card "+cardsUsed;
+        GameObject.Find("CardsLeft").GetComponent<TMP_Text>().text="Cards left:"+deck.Count;
         
     }
 
@@ -169,7 +192,10 @@ public class GameManagerScr : MonoBehaviour
                 speechBubble.text += queuedText[speechBubble.text.Length];
                 speechBubble.text += queuedText[speechBubble.text.Length];
             }
-            speechBubble.text += queuedText[speechBubble.text.Length];
+            else{
+                speechBubble.text += queuedText[speechBubble.text.Length];
+            }
+            
             yield return new WaitForSeconds(textTempo);
         }
         
@@ -230,20 +256,39 @@ public class GameManagerScr : MonoBehaviour
 
     public void NextTurn()
     {
+        pl.smanjiBrojPoteza();
+        GameObject.Find("TurnsLeft").GetComponent<TMP_Text>().text=pl.vratiBrojPoteza().ToString()+"minutes left";
         //calcCombo
-        if(selected1!=null)
+        if(selected1!=null && selected2!=null)
         {
-            enemy.uradiDmg(selected1.GetComponent<Card>());
+            merge();
+            
+        
+            enemy.uradiDmg(selected1.GetComponent<Card>(), mult);
+            mult = 1.0f;
             RemoveCard(selected1);
+        }
+        else if(selected1!=null)
+        {
+            enemy.uradiDmg(selected1.GetComponent<Card>(), mult);
+            mult = 1.0f;
+            RemoveCard(selected1);
+        }
+        if(enemy.vratiHealth()<=4)
+        {
+            Player.levelN+=1;
+            SceneManager.LoadScene(Player.levelN);
         }
         highlightSelected(true);
         selected1=null;
         selected2=null;
         StopCoroutine(printText);
         speechBubble.text="";
+        enemy.samnjiPotez();
         queuedText=enemy.vratiQuote();
         printText=spellOutText();
         StartCoroutine(printText);
+        
         
     }
 
@@ -251,12 +296,19 @@ public class GameManagerScr : MonoBehaviour
     {
         HandObj.transform.Find(c.name).SetParent(null);
         Destroy(c);
+        cardsUsed--;
+        if(HandObj.childCount<=0)
+        {
+            return;
+        }
         HandObj.GetChild(0).transform.position=HandObj.position;
+        HandObj.GetChild(0).transform.name="Card "+(1);
         for(int i = 1;i<HandObj.childCount;i++)
         {   
             //Debug.Log(cardsUsed);
             Vector3 pos = HandObj.GetChild(i-1).transform.position + Vector3.right*offsetCards;
             HandObj.GetChild(i).transform.position=pos;
+            HandObj.GetChild(i).transform.name="Card "+(i+1);
             
         }
     }

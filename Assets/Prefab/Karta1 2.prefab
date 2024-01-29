@@ -44,12 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a95cfa575515df4eb60f4ac7f2796dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tekstKarte: 2
-  kevaDmg: 1
-  redditDmg: 1
-  animeDmg: 1
-  dadJokeDmg: 1
-  izgledKarte: {fileID: 0}
+  tekstKarte: <color=red>mom super </color>
+  kevaDmg: 25
+  redditDmg: 0
+  animeDmg: 0
+  dadJokeDmg: 0
+  general: 0
+  izgledKarte: {fileID: 21300000, guid: 6dd953c97abbc1a43a0b96714170fe5b, type: 3}
   mozeDaSeMerguje: 0
   cardText: {fileID: 0}
   cardImage: {fileID: 0}
+  mergableLook: {fileID: 0}

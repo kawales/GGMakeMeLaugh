@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class Player : MonoBehaviour
@@ -10,8 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField] Card[] cards;
     [SerializeField] int maxBrojKarataURuci = 3;
     [SerializeField] int kolikoDiscardovaIma;
-    [SerializeField] int brojPoteza;
-
+    [SerializeField]public static int brojPoteza=30;
+    public static int levelN=0;
     public void povecajBrojKarataURuci(int zaKolikoGaPocevam)
     {
         maxBrojKarataURuci += zaKolikoGaPocevam;
@@ -64,6 +65,15 @@ public class Player : MonoBehaviour
     }
     public int vratiBrojPoteza()
     {
-        return this.brojPoteza;
+        return brojPoteza;
+    }
+
+    public void smanjiBrojPoteza()
+    {
+        brojPoteza--;
+        if(brojPoteza==0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }
